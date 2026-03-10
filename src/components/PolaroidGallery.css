@@ -1,0 +1,73 @@
+.gallery-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  /* Call background.jpeg directly from the public folder */
+  background-image: url('/background.jpeg'); 
+  background-size: cover;
+  background-position: center;
+  font-family: 'Dancing Script', cursive; /* Optional, requires Google Font */
+}
+
+/* Sizzling Romantic Overlay */
+.background-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(139,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+}
+
+.text-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 40px;
+  color: #ffb3c1;
+}
+
+.text-header h1 { font-size: 2.5rem; margin-bottom: 5px; }
+.text-header p { font-size: 1.2rem; opacity: 0.8; font-family: sans-serif; }
+
+.polaroid-stage {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  height: 70vh;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap; /* Allows them to wrap on smaller screens */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Designing the authentic Polaroid look */
+.polaroid-wrapper {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.polaroid {
+  padding: 15px 15px 40px 15px; /* Extra bottom padding for caption */
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transform: translateZ(0); /* Needed for smooth animation */
+}
+
+.polaroid img {
+  width: 150px; /* Adjust size based on total photos */
+  height: 150px;
+  object-fit: cover; /* Cropping images nicely */
+  border: 1px solid #ddd;
+}
+
+.caption {
+  text-align: center;
+  margin-top: 15px;
+  color: #333;
+  font-size: 1rem;
+}

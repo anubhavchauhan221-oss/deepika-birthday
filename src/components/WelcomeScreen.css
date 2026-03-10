@@ -1,0 +1,218 @@
+/* --- 1. DIMMED NIGHTTIME SCENERY --- */
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+  overflow: hidden; 
+  /* Deep, peaceful midnight blue to dark purple */
+  background: linear-gradient(to bottom, #050514 0%, #0d0a2b 40%, #1f1433 70%, #121221 100%);
+}
+
+.scenery-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+}
+
+/* --- THE CRESCENT MOON (Top Right) --- */
+.moon {
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  /* This shadow creates the perfect crescent shape! */
+  box-shadow: 18px 18px 0 0 #e8ef82;
+  animation: moonGlow 4s infinite alternate;
+}
+
+/* --- CLEAR, FLUFFY CLOUDS --- */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15); /* Dimmed white for night */
+  border-radius: 50px;
+  animation: drift linear infinite;
+}
+/* These pseudo-elements create the "fluffy" bumps on top of the clouds */
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+}
+.cloud::before {
+  width: 50px; height: 50px;
+  top: -25px; left: 15px;
+}
+.cloud::after {
+  width: 70px; height: 70px;
+  top: -35px; right: 20px;
+}
+
+.cloud-1 {
+  top: 15%;
+  left: 10%;
+}
+
+.cloud-2 {
+  top: 25%;
+  left: 60%;
+}
+
+.cloud-3 {
+  top: 10%;
+  left: 80%;
+}
+/* --- DIMMED MOUNTAINS --- */
+.mountains {
+  position: absolute;
+  bottom: 25%; 
+  width: 100%;
+  height: 35%;
+}
+.mountain {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0; 
+}
+.mountain-1 { width: 65%; height: 100%; left: -15%; background: #080a10; z-index: 1; }
+.mountain-2 { width: 55%; height: 80%; right: -10%; background: #0d121c; z-index: 2; }
+.mountain-3 { width: 45%; height: 60%; left: 35%; background: #05070a; z-index: 3; }
+
+/* --- DIMMED RIVER --- */
+.river {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 28%; 
+  /* Dark, peaceful water colors */
+  background: linear-gradient(to bottom, #0f1626, #060912);
+  box-shadow: inset 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* --- PROPER TEXTURED FISHES --- */
+.fish {
+  position: absolute;
+  animation: swim linear infinite;
+}
+.fish::before {
+  /* Using the highly textured OS native graphic! */
+  content: '🐠'; 
+  /* If you want to use a REAL picture, delete "content: '🐠';" and use this instead: */
+  /* content: url('/fish.png'); */
+  
+  font-size: 2.5rem;
+  display: block;
+  /* Flips the fish so it points to the right while swimming left-to-right */
+  transform: scaleX(-1); 
+  filter: brightness(0.8); /* Dims the fish slightly for nighttime */
+}
+
+.fish-1 { bottom: 60%; left: -100px; animation-duration: 18s; }
+.fish-2 { bottom: 30%; left: -100px; animation-duration: 25s; animation-delay: 6s; transform: scale(0.7); }
+.fish-3 { bottom: 75%; left: -100px; animation-duration: 22s; animation-delay: 12s; transform: scale(1.1); }
+
+/* --- ANIMATIONS --- */
+@keyframes moonGlow {
+  from { filter: drop-shadow(0 0 5px rgba(253, 247, 211, 0.2)); }
+  to { filter: drop-shadow(0 0 20px rgba(253, 247, 211, 0.6)); }
+}
+@keyframes drift {
+  from { transform: translateX(-200px); }
+  to { transform: translateX(110vw); }
+}
+@keyframes swim {
+  0% { transform: translate(-100px, 0px); }
+  25% { transform: translate(25vw, -10px); }
+  50% { transform: translate(50vw, 15px); }
+  75% { transform: translate(75vw, -5px); }
+  100% { transform: translate(110vw, 0px); }
+}
+
+/* ========================================================= */
+/* --- YOUR ORIGINAL CONTENT STYLES (FROSTED GLASS) --- */
+/* ========================================================= */
+
+.welcome-content {
+  position: relative;
+  z-index: 10; 
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+  padding: 40px;
+  
+  /* Semi-transparent so she can see the beautiful dark scenery! */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-content h1 {
+  color: #ff4d4d;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.welcome-content p {
+  color: #333; /* Darkened slightly to read better on glass */
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  font-weight: bold; 
+}
+
+.start-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+}
+
+.start-button:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+/* --- NEW: THE MAGICAL NIGHT RAINBOW --- */
+.rainbow {
+  position: absolute;
+  top: 15%;
+  left: 5%; /* Positioned on the left to balance the moon on the right */
+  width: 350px;
+  height: 175px;
+  border-radius: 175px 175px 0 0; /* Creates the perfect half-circle */
+  background: transparent;
+  
+  /* Creates the rainbow stripes using soft, semi-transparent pastel colors */
+  box-shadow:
+    inset 0 12px 0 0 rgba(255, 105, 180, 0.4), /* Soft Pink */
+    inset 0 24px 0 0 rgba(255, 182, 193, 0.4), /* Light Pink */
+    inset 0 36px 0 0 rgba(255, 255, 153, 0.4), /* Soft Yellow */
+    inset 0 48px 0 0 rgba(152, 251, 152, 0.4), /* Mint Green */
+    inset 0 60px 0 0 rgba(135, 206, 235, 0.4), /* Sky Blue */
+    inset 0 72px 0 0 rgba(221, 160, 221, 0.4); /* Lilac / Violet */
+    
+  filter: blur(3px); /* Makes it look dreamy and glowing instead of harsh */
+  z-index: 1; /* Keeps it naturally tucked behind the fluffy clouds */
+  animation: rainbowGlow 5s infinite alternate;
+}
+
+/* Add this to your existing @keyframes section at the bottom of the CSS */
+@keyframes rainbowGlow {
+  0% { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0.9; transform: scale(1.02); }
+}
